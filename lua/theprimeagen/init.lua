@@ -1,6 +1,7 @@
 require("theprimeagen.set")
 require("theprimeagen.remap")
 require("theprimeagen.packer")
+require("theprimeagen.statusline")
 
 local augroup = vim.api.nvim_create_augroup
 local ThePrimeagenGroup = augroup('ThePrimeagen', {})
