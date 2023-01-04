@@ -75,4 +75,6 @@ return require('packer').startup(function(use)
     use("mattn/vim-gist")
     use("kazhala/close-buffers.nvim")
     use("alexghergh/nvim-tmux-navigation")
+
+    use("simrat39/rust-tools.nvim")
 end)
