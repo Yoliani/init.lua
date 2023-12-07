@@ -42,6 +42,17 @@ lsp.configure(
     }
 )
 
+lsp.format_on_save({
+  format_opts = {
+    async = false,
+    timeout_ms = 10000,
+  },
+  servers = {
+    ['tsserver'] = {'javascript', 'typescript'},
+    ['rust_analyzer'] = {'rust'},
+  }
+})
+
 local cmp = require('cmp')
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_mappings = lsp.defaults.cmp_mappings({
@@ -80,18 +91,18 @@ lsp.on_attach(function(client, bufnr)
     local function lsp_keymaps(mode, key, cmd)
         vim.keymap.set(mode, key, cmd, opts)
     end
-        
-    lsp_keymaps("n", "gD", vim.lsp.buf.declaration, opts)
-    lsp_keymaps("n", "gd", vim.lsp.buf.definition, opts)
-    lsp_keymaps("n", "K", vim.lsp.buf.hover, opts)
-    lsp_keymaps("n", "<leader>vws", vim.lsp.buf.workspace_symbol, opts)
-    lsp_keymaps("n", "<leader>vd", vim.diagnostic.open_float, opts)
-    lsp_keymaps("n", "[d", vim.diagnostic.goto_next, opts)
-    lsp_keymaps("n", "]d", vim.diagnostic.goto_prev, opts)
-    lsp_keymaps("n", "<leader>vca", vim.lsp.buf.code_action, opts)
-    lsp_keymaps("n", "<leader>vrr", vim.lsp.buf.references, opts)
-    lsp_keymaps("n", "<leader>vrn", vim.lsp.buf.rename, opts)
-    lsp_keymaps("i", "<C-h>", vim.lsp.buf.signature_help, opts)
+
+    lsp_keymaps("n", "gD", vim.lsp.buf.declaration)
+    lsp_keymaps("n", "gd", vim.lsp.buf.definition)
+    lsp_keymaps("n", "K", vim.lsp.buf.hover)
+    lsp_keymaps("n", "<leader>vws", vim.lsp.buf.workspace_symbol)
+    lsp_keymaps("n", "<leader>vd", vim.diagnostic.open_float)
+    lsp_keymaps("n", "[d", vim.diagnostic.goto_next)
+    lsp_keymaps("n", "]d", vim.diagnostic.goto_prev)
+    lsp_keymaps("n", "<leader>vca", vim.lsp.buf.code_action)
+    lsp_keymaps("n", "<leader>vrr", vim.lsp.buf.references)
+    lsp_keymaps("n", "<leader>vrn", vim.lsp.buf.rename)
+    lsp_keymaps("i", "<C-h>", vim.lsp.buf.signature_help)
 end)
 
 lsp.setup()
